@@ -10,11 +10,14 @@ import {
     Patch,
     UsePipes,
     ValidationPipe,
-    ParseIntPipe
+    ParseIntPipe, UseGuards
 } from '@nestjs/common';
 import {Task} from "./task.entity";
 import { TaskStatus } from './task.model';
+import { AuthGuard } from '@nestjs/passport';
 
+
+@UseGuards(AuthGuard())
 @Controller('tasks')
 export class TasksController {
     constructor(private tasksService: TasksService) {}
